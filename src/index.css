@@ -51,6 +51,12 @@ code {
 
 }
 
+/* @font-face {
+  font-family: 'Poppins', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+} */
+
 #intro-bg {
   background: linear-gradient(to top, #D98145, #F0B359);
   height: 120vh;
@@ -61,11 +67,12 @@ code {
 }
 
 #about-arrow {
-  border-bottom: 10vh solid #F2DF4D;
-  border-left: 100vmax solid transparent;
-  border-right: 100vmax solid transparent;
-  height: 0;
-  width: 0;
+  border-bottom: 5em solid #F2DF4D;
+  border-left: 48vw solid transparent;
+  border-right: 48vw solid transparent;
+  float: left;
+  height: 10rem;
+  width: 100%;
 }
 
 #name {
@@ -79,7 +86,6 @@ code {
   width: 40rem;
   height: 25rem;
   background-color: #F8714F;
-  box-shadow: 20px;
   border-top: 1rem solid transparent;
   border-bottom: 3rem solid transparent;
   border-top-right-radius: 15rem 10rem;
@@ -145,13 +151,151 @@ code {
 
 #profile-pic {
   mask-image: url("./svg/oval.svg");
-  /*mask-image: radial-gradient(circle, black 50%, rgba(0, 0, 0, 0) 50%);*/
-  mask-position: 50% 62%;
-  transform: scale(0.7);
+  height: 100%;
+  width: 100%;
+  background-image: url("./img/japanese_josh.jpeg");
+  mask-position: 50% 50%;
+  mask-size: 50rem;
+  background-position: 50% 0%;
+  background-size: 40rem;
+}
+
+#tvScreen {
+  position: relative;
+  width: 35rem;
+  height: 25rem;
+  margin: 20px 0;
+  background-image: url("./img/static1.gif");
+  border-radius: 50% / 10%;
+  color: white;
+  text-align: center;
+  text-indent: .1em;
+}
+#tvScreen:before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  right: -5%;
+  left: -5%;
+  background: inherit;
+  border-radius: 5% / 50%;
+}
+
+#tvFrame {
+  background: #4a2407;
+  width: 45rem;
+  height: 30rem;
+  border-top: 2rem solid #70360a;
+  border-right: 2rem solid #70360a;
+  border-left: 2rem solid #70360a;
+  border-bottom: 2rem solid #70360a;
+}
+
+#tvControls {
+  width: 10rem;
+  height: 30rem;
+  background: #4a2407;
+}
+
+#tvLegLeft {
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-top: 130px solid #4a2407;
+  transform: translateY(-1.5rem) rotate(25deg);
+}
+
+#tvLegRight {
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-top: 130px solid #4a2407;
+  transform: translateY(-1.5rem) rotate(-25deg);
+}
+
+#tvShadow {
+  height: 5rem;
+  background: radial-gradient(
+    ellipse,
+    #0a0a0a,
+    #0a0a0a 0%,
+    transparent 70%, 
+    transparent
+    );
+  transform: translateY(2rem);
+}
+
+.tvGrate {
+  width: 8rem;
+  height: 8rem;
+  border: 0.2rem solid #401c01;
+  background: linear-gradient(
+    to bottom,
+    #70360a,
+    #70360a 50%,
+    #4a2407 50%,
+    #4a2407
+  );
+  background-size: 100% 1.18rem;
+}
+
+.tvKnob {
+  width: 100px;
+  height: 100px;
+  box-shadow: 3rem;
+  background: radial-gradient(
+    circle,
+    #919191,
+    #919191 35%, 
+    #c4c3c2 45%,
+    #c4c3c2 );
+  border: 0.25rem solid #4f4f4e;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.stat-fill {
+  animation-name: statAnim;
+  animation-duration: 4s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+}
+
+.stat-title {
+  font-family: 'Poppins';
+  font-weight: 800;
+  font-style: normal;
+  
+}
+
+.stat-name {
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-style: normal;
+}
+
+.section-title {
+  font-family: 'fifties_moviesregular';
+  font-weight: normal;
+  font-style: normal;
+}
+
+.about-text {
+  font-family: 'Poppins';
+  font-weight: 200;
+  font-style: normal;
 }
 
 @keyframes blobAnim {
   0% {transform: rotateY(0deg) rotate(12deg)}
   50% {transform: rotateY(20deg) rotate(12deg)}
   100% {transform: rotateY(0deg) rotate(12deg)}
+}
+
+@keyframes statAnim {
+  0% {max-width: 0}
+  100% {max-width: 26rem}
 }
