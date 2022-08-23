@@ -228,6 +228,41 @@ code {
   transform: translateY(2rem);
 }
 
+#fasterTrait {
+  width: 10rem;
+  height: 10rem;
+  mask-image: url('./img/faster-icon.png');
+  mask-position: center;
+  mask-size: cover;
+  background: #eee8bf;
+}
+
+#dynamicTrait {
+  width: 10rem;
+  height: 10rem;
+  mask-image: url('./img/dynamic-icon.png');
+  mask-position: center;
+  mask-size: cover;
+  background: #eee8bf;
+}
+
+#cleanTrait {
+  width: 10rem;
+  height: 10rem;
+  mask-image: url('./img/clean-icon.png');
+  mask-position: center;
+  mask-size: cover;
+  background: #eee8bf;
+}
+
+#tvGuideLogo {
+  width: 11rem;
+  height: 8rem;
+  background-image: url('./img/TVGuideLogo2.png');
+  background-position: center;
+  background-size: cover;
+}
+
 .tvGrate {
   width: 8rem;
   height: 8rem;

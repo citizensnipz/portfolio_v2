@@ -27,8 +27,8 @@ const Stats: FC = () => {
   });
 
   return (
-    <div className="xs:w-[30rem] sm:w-[40rem] lg:w-full flex xs:items-center sm:justify-center md:items-start xs:flex-col sm:flex-row m-8 p-3 rounded-lg bg-amber-100 shadow-lg">
-      <div className="h-full xs:w-full sm:w-1/2">
+    <div className="xs:w-[30rem] sm:w-[40rem] md:w-11/12 lg:w-full flex xs:items-center sm:justify-center md:items-start xs:flex-col sm:flex-row m-8 p-3 rounded-lg bg-amber-100 shadow-lg">
+      <div className="h-full xs:w-full md:w-1/2">
         <div className="flex justify-center stat-title xs:text-md sm:text-2xl lg:text-3xl mb-6" >Languages</div>
         
         <StatBar name="HTML" value="95" />
