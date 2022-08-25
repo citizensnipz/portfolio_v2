@@ -21,12 +21,14 @@ const Work: FC = () => {
 
   const handleGuideClick = (name: string) => {
     const project: Project = projects[name];
-    console.log(project.img)
+    console.log(project.img);
     setProjectDisplay(project);
     const panelXL = document.getElementById("info-panel-XL");
     const panelLG = document.getElementById("info-panel-LG");
     const screenLG_static = document.getElementById("tvScreenLG-static");
     const screenLG_display = document.getElementById("tvScreenLG-display");
+    const screenXL_static = document.getElementById("tvScreenXL-static");
+    const screenXL_display = document.getElementById("tvScreenXL-display");
     const windowWidth = window.innerWidth;
     //ensures that large and small panels will be closed when changing window sizes
     //and that the first click always opens the panel
@@ -46,6 +48,10 @@ const Work: FC = () => {
       //closes XL panel
       panelXL?.classList.remove("info-anim-out");
       panelXL?.classList.add("info-anim-in");
+      screenXL_static?.classList.add("block");
+      screenXL_static?.classList.remove("hidden");
+      screenXL_display?.classList.remove("block");
+      screenXL_display?.classList.add("hidden");
       setTimeout(() => {
         panelXL?.classList.remove("flex");
         panelXL?.classList.add("hidden");
@@ -56,6 +62,10 @@ const Work: FC = () => {
       panelXL?.classList.remove("info-anim-in");
       panelXL?.classList.add("flex");
       panelXL?.classList.add("info-anim-out");
+      screenXL_static?.classList.remove("block");
+      screenXL_static?.classList.add("hidden");
+      screenXL_display?.classList.remove("hidden");
+      screenXL_display?.classList.add("block");
     } else if (isLGPanelOpen && windowWidth < 1280) {
       //closes LG panel
       panelLG?.classList.remove("info-anim-LG-out");
@@ -81,11 +91,9 @@ const Work: FC = () => {
     }
   };
 
-  useEffect(() => {}, []);
-
   return (
-    <div className="bg-yellow-600 w-full h-[100vh] flex flex-col justify-start items-center relative backdrop:pt-8 ">
-      <h1 className="text-6xl h-[8rem] section-title w-full flex items-center justify-center">
+    <div className="bg-yellow-600 dark:bg-indigo-900 w-full h-[120vh] flex flex-col justify-start items-center relative backdrop:pt-8 ">
+      <h1 className="text-6xl h-[8rem] section-title w-full flex items-center justify-center dark:text-[#eee8bf]">
         Work
       </h1>
       <div
@@ -96,29 +104,29 @@ const Work: FC = () => {
         <div className="flex-row w-[44rem] absolute z-2 top-[32rem] xs:hidden xl:flex">
           <div
             id="info-panel-XL"
-            className="w-[16rem] h-[30rem] hidden bg-white absolute z-0 flex-col items-center p-3 shadow-lg"
+            className="w-[16rem] h-[30rem] hidden bg-white dark:bg-cyan-800 absolute z-0 flex-col items-center p-3 shadow-lg"
           >
             {projectDisplay.name !== undefined ? (
               <div className="flex flex-col items-center justify-between h-full">
-                <h2 id="title" className="text-xl mt-14">
-                  {projectDisplay.name}
+                <h2 id="title" className="text-xl mt-14 dark:text-[#eee8bf]">
+                  <a href={projectDisplay.url} target="_blank">{projectDisplay.name}</a>
                 </h2>
                 <div className="flex flex-col items-center">
-                  <h4 id="subtitle">Description:</h4>
-                  <p id="text" className="text-center">
+                  <h4 id="subtitle" className="dark:text-[#eee8bf]">Description:</h4>
+                  <p id="text" className="text-center dark:text-[#eee8bf]">
                     {projectDisplay.description}
                   </p>
                 </div>
                 <div className="flex flex-col items-center">
-                  <h4 id="subtitle">Languages:</h4>
-                  <p id="text" className="text-center">
-                    {projectDisplay.languages.join(" ")}
+                  <h4 id="subtitle" className="dark:text-[#eee8bf]">Languages:</h4>
+                  <p id="text" className="text-center dark:text-[#eee8bf]">
+                    {projectDisplay.languages.join(", ")}
                   </p>
                 </div>
                 <div className="flex flex-col items-center mb-14">
-                  <h4 id="subtitle">Frameworks/Libraries:</h4>
-                  <p id="text" className="text-center">
-                    {projectDisplay.frameworks.join(" ")}
+                  <h4 id="subtitle" className="dark:text-[#eee8bf]">Frameworks/Libraries:</h4>
+                  <p id="text" className="text-center dark:text-[#eee8bf]">
+                    {projectDisplay.frameworks.join(", ")}
                   </p>
                 </div>
               </div>
@@ -136,7 +144,22 @@ const Work: FC = () => {
             id="tvFrameXL"
             className="flex justify-center items-center rounded-l-md shadow-2xl"
           >
-            <div id="tvScreenXL" className="shadow-lg" />
+            <div id="tvScreenXL-static" className="shadow-lg" />
+            <div
+              id="tvScreenXL-display"
+              className="shadow-lg hidden bg-black z-3"
+            >
+              <a href={projectDisplay.url} target="_blank">
+              <div
+                className="w-full h-full"
+                style={{
+                  backgroundImage: `url("${projectDisplay.img}")`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center"
+                }}
+              />
+              </a>
+            </div>
           </div>
           <div id="tvControlsXL" className="rounded-r-md">
             <div
@@ -167,8 +190,15 @@ const Work: FC = () => {
             className="flex justify-center items-center rounded-l-md shadow-2xl"
           >
             <div id="tvScreenLG-static" className="shadow-lg" />
-            <div id="tvScreenLG-display" className="shadow-lg hidden"  >
-                <div className="w-full h-full" style={{background: `url("${projectDisplay.img}") no-repeat`}} />
+            <div id="tvScreenLG-display" className="shadow-lg hidden">
+            <a href={projectDisplay.url} target="_blank">
+              <div
+                className="w-full h-full"
+                style={{ backgroundImage: `url("${projectDisplay.img}")`,
+                backgroundSize: "cover",
+                backgroundPosition: "center"}}
+              />
+              </a>
             </div>
           </div>
           <div id="tvControlsLG" className="rounded-r-md">
@@ -199,31 +229,31 @@ const Work: FC = () => {
           >
             <div
               id="info-panel-LG"
-              className="bg-white w-5/6 h-full absolute flex-col items-center rounded-t-md z-0"
+              className="bg-white dark:bg-cyan-800 w-5/6 h-full absolute flex-col items-center rounded-t-md z-0"
             >
               {projectDisplay.name !== undefined ? (
                 <div className="flex flex-row items-between items-center p-4">
-                  <h2 id="title" className="text-xl">
-                    {projectDisplay.name}
+                  <h2 id="title" className="text-xl dark:text-[#eee8bf]">
+                  <a href={projectDisplay.url} target="_blank">{projectDisplay.name}</a>
                   </h2>
                   <div className="flex flex-col items-center">
-                  <h4 id="subtitle">Description:</h4>
-                  <p id="text" className="text-center">
-                    {projectDisplay.description}
-                  </p>
-                </div>
-                <div className="flex flex-col items-center">
-                  <h4 id="subtitle">Languages:</h4>
-                  <p id="text" className="text-center">
-                    {projectDisplay.languages.join(" ")}
-                  </p>
-                </div>
-                <div className="flex flex-col items-center">
-                  <h4 id="subtitle">Frameworks/Libraries:</h4>
-                  <p id="text" className="text-center">
-                    {projectDisplay.frameworks.join(" ")}
-                  </p>
-                </div>
+                    <h4 id="subtitle" className="dark:text-[#eee8bf]">Description:</h4>
+                    <p id="text" className="text-center dark:text-[#eee8bf]">
+                      {projectDisplay.description}
+                    </p>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <h4 id="subtitle" className="dark:text-[#eee8bf]">Languages:</h4>
+                    <p id="text" className="text-center dark:text-[#eee8bf]">
+                      {projectDisplay.languages.join(", ")}
+                    </p>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <h4 id="subtitle" className="dark:text-[#eee8bf]">Frameworks/Libraries:</h4>
+                    <p id="text" className="text-center dark:text-[#eee8bf]">
+                      {projectDisplay.frameworks.join(", ")}
+                    </p>
+                  </div>
                 </div>
               ) : null}
             </div>

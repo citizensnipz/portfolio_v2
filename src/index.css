@@ -51,21 +51,6 @@ code {
 
 }
 
-/* @font-face {
-  font-family: 'Poppins', sans-serif;
-  font-weight: normal;
-  font-style: normal;
-} */
-
-#intro-bg {
-  background: linear-gradient(to top, #D98145, #F0B359);
-  height: 120vh;
-}
-
-#about-bg {
-  background: linear-gradient(to top, #F0B359, #F2DF4D);
-}
-
 #about-arrow {
   border-bottom: 5em solid #F2DF4D;
   border-left: 49vw solid transparent;
@@ -75,8 +60,27 @@ code {
   width: 100%;
 }
 
+#about-arrow-dark {
+  border-bottom: 5em solid #7B56F7;
+  border-left: 49vw solid transparent;
+  border-right: 49vw solid transparent;
+  float: left;
+  height: 10rem;
+  width: 100%;
+}
+
 #contact-arrow {
   border-bottom: 5em solid #a16207;
+  border-left: 49vw solid transparent;
+  border-right: 49vw solid transparent;
+  float: left;
+  height: 10rem;
+  width: 100%;
+  transform: scale(-1);
+}
+
+#contact-arrow-dark {
+  border-bottom: 5em solid #312e81;
   border-left: 49vw solid transparent;
   border-right: 49vw solid transparent;
   float: left;
@@ -95,7 +99,6 @@ code {
 #blob1 {
   width: 40rem;
   height: 25rem;
-  background-color: #F8714F;
   border-top: 1rem solid transparent;
   border-bottom: 3rem solid transparent;
   border-top-right-radius: 15rem 10rem;
@@ -122,11 +125,27 @@ code {
   animation-timing-function: ease-in-out;
 }
 
+#blob2-dark {
+  width: 40rem;
+  height: 25rem;
+  background-color: "transparent";
+  border-top: 1rem solid #4BC6D6;
+  border-bottom: 1rem solid #4BC6D6;
+  border-top-right-radius: 15rem 10rem;
+  border-top-left-radius: 50rem 20rem;
+  border-bottom-left-radius: 39rem 20rem;
+  border-bottom-right-radius: 20rem 30rem;
+  transform: rotate(20deg);
+  animation-name: blobAnim;
+  animation-duration: 3.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
 #job-title {
   font-family: 'fifties_moviesregular';
   font-weight: normal;
   font-style: normal;
-  color: beige;
 }
 
 #title {
@@ -150,7 +169,6 @@ code {
 #bubble {
   width: 8rem;
   height: 5rem;
-  background-color: white;
   border-radius: 50% 50% 50% 50%;
   transform: rotate(6deg);
   box-shadow: 2rem;
@@ -158,7 +176,6 @@ code {
 }
 
 #burst-8 {
-  background: black;
   width: 80px;
   height: 80px;
   position: relative;
@@ -168,12 +185,12 @@ code {
 }
 #burst-8:before {
   content: "";
+  background: inherit;
   position: absolute;
   top: 0;
   left: 0;
   height: 80px;
   width: 80px;
-  background: black;
   transform: rotate(135deg);
 }
 
@@ -188,7 +205,7 @@ code {
   background-size: 40rem;
 }
 
-#tvScreenXL {
+#tvScreenXL-static {
   position: relative;
   width: 35rem;
   height: 25rem;
@@ -199,7 +216,7 @@ code {
   text-align: center;
   text-indent: .1em;
 }
-#tvScreenXL:before {
+#tvScreenXL-static:before {
   content: '';
   position: absolute;
   top: 10%;
@@ -232,25 +249,22 @@ code {
   border-radius: 5% / 50%;
 }
 
-#tvScreenLG-display {
-  position: relative;
-  width: 25rem;
-  height: 23rem;
-  margin: 20px 0;
-  border-radius: 50% / 10%;
-  color: white;
-  text-align: center;
-  text-indent: .1em;
-}
-#tvScreenLG-display:before {
-  content: '';
+#tvScreenXL-display {
   position: absolute;
-  top: 10%;
-  bottom: 10%;
-  right: -5%;
-  left: -5%;
-  background: inherit;
-  border-radius: 5% / 50%;
+  height: 25rem;
+  width: 37rem;
+  mask-image: url("./img/tvScreen-icon-mask.png");
+  mask-size: cover;
+  mask-position: center;
+}
+
+#tvScreenLG-display {
+  position: absolute;
+  height: 23rem;
+  width: 27rem;
+  mask-image: url("./img/tvScreen-icon-mask.png");
+  mask-size: cover;
+  mask-position: center;
 }
 
 #tvFrameXL {
@@ -506,6 +520,73 @@ code {
   font-style: normal;
 }
 
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid white;
+  background-color: rgb(18, 190, 233);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 23px;
+  width: 23px;
+  left: 4px;
+  bottom: 4px;
+  background-color: yellow;
+  
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: rgb(44, 42, 74);
+  border: 2px solid #585175;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px rgb(44, 42, 74)
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+  background-color: gray;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
 @keyframes blobAnim {
   0% {transform: rotateY(0deg) rotate(12deg)}
   50% {transform: rotateY(30deg) rotate(12deg)}
@@ -529,9 +610,9 @@ code {
 
 @keyframes infoAnimLG-Out {
   0% {transform: translateY(0rem);}
-  100% {transform: translateY(-8rem);}
+  100% {transform: translateY(-9rem);}
 }
  @keyframes infoAnimLG-In {
-  0% {transform: translateY(-8rem);}
+  0% {transform: translateY(-9rem);}
   100% {transform: translateY(0rem);}
  }
