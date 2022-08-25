@@ -18,7 +18,7 @@ const Intro: FC = () => {
         >
           Josh Kroslowitz
         </h1>
-        <h3 id="subtitle" className="text-1xl font-bold rotate-[-4deg] ml-10">
+        <h3 id="job-title" className="text-1xl font-bold rotate-[-4deg] ml-10">
           web developer
         </h3>
       </div>

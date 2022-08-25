@@ -46,7 +46,7 @@ const About: FC = () => {
             </div>
           </div>
         </div>
-        {/*for sm screens and below */}
+        {/*for md screens and below */}
         <div className="w-full h-full flex-col xs:flex lg:hidden">
           <div className="h-full w-full flex justify-center flex-col">
             <Stats />
