@@ -68,11 +68,21 @@ code {
 
 #about-arrow {
   border-bottom: 5em solid #F2DF4D;
-  border-left: 48vw solid transparent;
-  border-right: 48vw solid transparent;
+  border-left: 49vw solid transparent;
+  border-right: 49vw solid transparent;
   float: left;
   height: 10rem;
   width: 100%;
+}
+
+#contact-arrow {
+  border-bottom: 5em solid #a16207;
+  border-left: 49vw solid transparent;
+  border-right: 49vw solid transparent;
+  float: left;
+  height: 10rem;
+  width: 100%;
+  transform: scale(-1);
 }
 
 #name {
@@ -107,16 +117,34 @@ code {
   border-bottom-right-radius: 20rem 30rem;
   transform: rotate(20deg);
   animation-name: blobAnim;
-  animation-duration: 4s;
+  animation-duration: 3.5s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
 }
 
-#subtitle {
+#job-title {
   font-family: 'fifties_moviesregular';
   font-weight: normal;
   font-style: normal;
   color: beige;
+}
+
+#title {
+  font-family: 'kelvinizednormal';
+  font-weight: normal;
+  font-style: normal;
+}
+
+#subtitle {
+  font-family: 'mouse_memoirsregular';
+  font-weight: normal;
+  font-style: normal;
+}
+
+#text {
+  font-family: 'Poppins';
+  font-weight: 200;
+  font-style: normal;
 }
 
 #bubble {
@@ -160,7 +188,7 @@ code {
   background-size: 40rem;
 }
 
-#tvScreen {
+#tvScreenXL {
   position: relative;
   width: 35rem;
   height: 25rem;
@@ -171,7 +199,7 @@ code {
   text-align: center;
   text-indent: .1em;
 }
-#tvScreen:before {
+#tvScreenXL:before {
   content: '';
   position: absolute;
   top: 10%;
@@ -182,7 +210,50 @@ code {
   border-radius: 5% / 50%;
 }
 
-#tvFrame {
+#tvScreenLG-static {
+  position: relative;
+  width: 25rem;
+  height: 23rem;
+  margin: 20px 0;
+  background-image: url("./img/static1.gif");
+  border-radius: 50% / 10%;
+  color: white;
+  text-align: center;
+  text-indent: .1em;
+}
+#tvScreenLG-static:before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  right: -5%;
+  left: -5%;
+  background: inherit;
+  border-radius: 5% / 50%;
+}
+
+#tvScreenLG-display {
+  position: relative;
+  width: 25rem;
+  height: 23rem;
+  margin: 20px 0;
+  border-radius: 50% / 10%;
+  color: white;
+  text-align: center;
+  text-indent: .1em;
+}
+#tvScreenLG-display:before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  right: -5%;
+  left: -5%;
+  background: inherit;
+  border-radius: 5% / 50%;
+}
+
+#tvFrameXL {
   background: #4a2407;
   width: 45rem;
   height: 30rem;
@@ -192,8 +263,24 @@ code {
   border-bottom: 2rem solid #70360a;
 }
 
-#tvControls {
+#tvFrameLG {
+  background: #4a2407;
+  width: 35rem;
+  height: 30rem;
+  border-top: 2rem solid #70360a;
+  border-right: 2rem solid #70360a;
+  border-left: 2rem solid #70360a;
+  border-bottom: 2rem solid #70360a;
+}
+
+#tvControlsXL {
   width: 10rem;
+  height: 30rem;
+  background: #4a2407;
+}
+
+#tvControlsLG {
+  width: 7rem;
   height: 30rem;
   background: #4a2407;
 }
@@ -228,7 +315,76 @@ code {
   transform: translateY(2rem);
 }
 
-.tvGrate {
+#fasterTrait {
+  width: 10rem;
+  height: 10rem;
+  mask-image: url('./img/faster-icon.png');
+  mask-position: center;
+  mask-size: cover;
+  background: #eee8bf;
+}
+
+#dynamicTrait {
+  width: 10rem;
+  height: 10rem;
+  mask-image: url('./img/dynamic-icon.png');
+  mask-position: center;
+  mask-size: cover;
+  background: #eee8bf;
+}
+
+#cleanTrait {
+  width: 10rem;
+  height: 10rem;
+  mask-image: url('./img/clean-icon.png');
+  mask-position: center;
+  mask-size: cover;
+  background: #eee8bf;
+}
+
+#tvGuideLogo {
+  width: 12rem;
+  height: 9rem;
+  background-image: url('./img/TVGuideLogo2.png');
+  background-position: center;
+  background-size: cover;
+  transform: scale(0.8);
+}
+
+#github-icon {
+  width: 3rem;
+  height: 3rem;
+  mask-image: url('./img/github-icon2.png');
+  mask-position: center;
+  mask-size: cover; 
+  background: #eee8bf;
+}
+
+#telegram-icon {
+  width: 3rem;
+  height: 3rem;
+  mask-image: url('./img/telegram-icon2.png');
+  mask-position: center;
+  mask-size: cover; 
+  background: #eee8bf;
+}
+
+#linkedin-icon {
+  width: 3rem;
+  height: 3rem;
+  mask-image: url('./img/linkedin-icon2.png');
+  mask-position: center;
+  mask-size: cover; 
+  background: #eee8bf;
+}
+
+#info-panel-XL {
+  transform: translateX(-5.5rem) translateY(-30rem);
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.tvGrateXL {
   width: 8rem;
   height: 8rem;
   border: 0.2rem solid #401c01;
@@ -242,7 +398,21 @@ code {
   background-size: 100% 1.18rem;
 }
 
-.tvKnob {
+.tvGrateLG {
+  width: 5rem;
+  height: 5rem;
+  border: 0.2rem solid #401c01;
+  background: linear-gradient(
+    to bottom,
+    #70360a,
+    #70360a 50%,
+    #4a2407 50%,
+    #4a2407
+  );
+  background-size: 100% 1.18rem;
+}
+
+.tvKnobXL {
   width: 100px;
   height: 100px;
   box-shadow: 3rem;
@@ -255,6 +425,53 @@ code {
   border: 0.25rem solid #4f4f4e;
   border-radius: 50%;
   z-index: 1;
+}
+
+.tvKnobLG {
+  width: 80px;
+  height: 80px;
+  box-shadow: 3rem;
+  background: radial-gradient(
+    circle,
+    #919191,
+    #919191 35%, 
+    #c4c3c2 45%,
+    #c4c3c2 );
+  border: 0.25rem solid #4f4f4e;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.info-anim-out {
+  animation: infoAnimOut;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.info-anim-in {
+  animation: infoAnimIn;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.info-anim-LG-out {
+  animation: infoAnimLG-Out;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.info-anim-LG-in {
+  animation: infoAnimLG-In;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
 }
 
 .stat-fill {
@@ -291,7 +508,7 @@ code {
 
 @keyframes blobAnim {
   0% {transform: rotateY(0deg) rotate(12deg)}
-  50% {transform: rotateY(20deg) rotate(12deg)}
+  50% {transform: rotateY(30deg) rotate(12deg)}
   100% {transform: rotateY(0deg) rotate(12deg)}
 }
 
@@ -299,3 +516,22 @@ code {
   0% {max-width: 0}
   100% {max-width: 26rem}
 }
+
+@keyframes infoAnimOut {
+  0% {transform: translateX(-5.5rem) translateY(-30rem);}
+  100% {transform: translateX(-21rem) translateY(-30rem);}
+}
+
+@keyframes infoAnimIn {
+  0% {transform: translateX(-21rem) translateY(-30rem);}
+  100% {transform: translateX(-5.5rem) translateY(-30rem);}
+}
+
+@keyframes infoAnimLG-Out {
+  0% {transform: translateY(0rem);}
+  100% {transform: translateY(-8rem);}
+}
+ @keyframes infoAnimLG-In {
+  0% {transform: translateY(-8rem);}
+  100% {transform: translateY(0rem);}
+ }
