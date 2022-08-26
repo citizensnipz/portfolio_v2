@@ -7,7 +7,7 @@ const Contact: FC = () => {
 
   useEffect(() => {}, [theme]);
   return (
-    <div className="bg-gradient-to-t from-yellow-700 to-orange-600 dark:from-indigo-900 dark:to-sky-900 w-full h-screen flex flex-col items-center">
+    <div id="contact-bg" className="bg-gradient-to-t from-yellow-700 to-orange-600 dark:from-indigo-900 dark:to-sky-900 w-full h-screen flex flex-col items-center pt-[2rem]">
       <h1 className="text-6xl h-[8rem] section-title w-full flex items-center justify-center mt-10 mb-6 dark:text-[#eee8bf]">
         Contact
       </h1>

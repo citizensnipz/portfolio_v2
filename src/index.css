@@ -562,6 +562,12 @@ code {
   transition: .4s;
 }
 
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
 input:checked + .slider {
   background-color: rgb(44, 42, 74);
   border: 2px solid #585175;

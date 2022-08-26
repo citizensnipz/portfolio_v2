@@ -92,8 +92,8 @@ const Work: FC = () => {
   };
 
   return (
-    <div className="bg-yellow-600 dark:bg-indigo-900 w-full h-[120vh] flex flex-col justify-start items-center relative backdrop:pt-8 ">
-      <h1 className="text-6xl h-[8rem] section-title w-full flex items-center justify-center dark:text-[#eee8bf]">
+    <div id="work-bg" className="bg-yellow-600 dark:bg-indigo-900 w-full h-[100vh] flex flex-col justify-start items-center relative backdrop:pt-8 ">
+      <h1 className="text-6xl h-[3rem] mt-4 section-title w-full flex items-center justify-center dark:text-[#eee8bf]">
         Work
       </h1>
       <div
