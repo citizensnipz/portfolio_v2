@@ -107,6 +107,16 @@ code {
   border-bottom-right-radius: 20rem 30rem;
 }
 
+#blob1-xs {
+  width: 24rem;
+  height: 18rem;
+  border-top: 1rem solid transparent;
+  border-bottom: 3rem solid transparent;
+  border-top-right-radius: 15rem 10rem;
+  border-top-left-radius: 50rem 20rem;
+  border-bottom-left-radius: 39rem 20rem;
+  border-bottom-right-radius: 20rem 30rem;
+}
 
 #blob2 {
   width: 40rem;
@@ -125,9 +135,43 @@ code {
   animation-timing-function: ease-in-out;
 }
 
+#blob2-xs {
+  width: 24rem;
+  height: 20rem;
+  background-color: "transparent";
+  border-top: 1rem solid #F2DF4D;
+  border-bottom: 1rem solid #F2DF4D;
+  border-top-right-radius: 15rem 10rem;
+  border-top-left-radius: 50rem 20rem;
+  border-bottom-left-radius: 39rem 20rem;
+  border-bottom-right-radius: 20rem 30rem;
+  transform: rotate(20deg);
+  animation-name: blobAnim;
+  animation-duration: 3.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
 #blob2-dark {
   width: 40rem;
   height: 25rem;
+  background-color: "transparent";
+  border-top: 1rem solid #4BC6D6;
+  border-bottom: 1rem solid #4BC6D6;
+  border-top-right-radius: 15rem 10rem;
+  border-top-left-radius: 50rem 20rem;
+  border-bottom-left-radius: 39rem 20rem;
+  border-bottom-right-radius: 20rem 30rem;
+  transform: rotate(20deg);
+  animation-name: blobAnim;
+  animation-duration: 3.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+#blob2-dark-xs {
+  width: 24rem;
+  height: 20rem;
   background-color: "transparent";
   border-top: 1rem solid #4BC6D6;
   border-bottom: 1rem solid #4BC6D6;
@@ -350,6 +394,33 @@ code {
 #cleanTrait {
   width: 10rem;
   height: 10rem;
+  mask-image: url('./img/clean-icon.png');
+  mask-position: center;
+  mask-size: cover;
+  background: #eee8bf;
+}
+
+#fasterTrait-xs {
+  width: 6rem;
+  height: 6rem;
+  mask-image: url('./img/faster-icon.png');
+  mask-position: center;
+  mask-size: cover;
+  background: #eee8bf;
+}
+
+#dynamicTrait-xs {
+  width: 6rem;
+  height: 6rem;
+  mask-image: url('./img/dynamic-icon.png');
+  mask-position: center;
+  mask-size: cover;
+  background: #eee8bf;
+}
+
+#cleanTrait-xs {
+  width: 6rem;
+  height: 6rem;
   mask-image: url('./img/clean-icon.png');
   mask-position: center;
   mask-size: cover;

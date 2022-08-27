@@ -26,7 +26,6 @@ const NavBar: FC = () => {
     const navbar = document.getElementById("navbar");
     const navContainer = document.getElementById("nav-container");
     let sticky = navbar?.offsetTop;
-    console.log(sticky);
     const stickyNav = () => {
       if (navbar && sticky) {
         if (window.pageYOffset >= sticky) {
@@ -56,7 +55,7 @@ const NavBar: FC = () => {
                 .getElementById(item + "-bg")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
-            className="h-[1rem] w-[5rem] section-title text-amber-800 dark:text-[#eee8bf]"
+            className="h-[1rem] xs:w-[4rem] md:w-[5rem] section-title text-amber-800 dark:text-[#eee8bf]"
           >
             {item}
           </button>

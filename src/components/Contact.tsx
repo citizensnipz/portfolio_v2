@@ -11,7 +11,7 @@ const Contact: FC = () => {
       <h1 className="text-6xl h-[8rem] section-title w-full flex items-center justify-center mt-10 mb-6 dark:text-[#eee8bf]">
         Contact
       </h1>
-      <p id="name" className="text-3xl mb-4 mt-4 dark:text-[#eee8bf]">
+      <p id="name" className="text-3xl text-center mb-4 mt-4 dark:text-[#eee8bf]">
         Get in touch. Let's build something amazing together!
       </p>
       <form

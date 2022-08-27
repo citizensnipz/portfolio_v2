@@ -27,7 +27,7 @@ const Stats: FC = () => {
   });
 
   return (
-    <div className="xs:w-[30rem] sm:w-[40rem] md:w-11/12 lg:w-full flex xs:items-center sm:justify-center md:items-start xs:flex-col sm:flex-row m-8 p-3 rounded-lg bg-gradient-to-t from-amber-200 to-amber-100 dark:from-fuchsia-800 dark:to-purple-800 shadow-lg">
+    <div className="xs:w-[21rem] sm:w-[40rem] md:w-11/12 lg:w-full flex xs:items-center sm:justify-center md:items-start xs:flex-col sm:flex-row m-8 p-3 rounded-lg bg-gradient-to-t from-amber-200 to-amber-100 dark:from-fuchsia-800 dark:to-purple-800 shadow-lg">
       <div className="h-full xs:w-full md:w-1/2">
         <div className="flex justify-center stat-title xs:text-md sm:text-2xl lg:text-3xl mb-6 dark:text-[#eee8bf]">
           Languages

@@ -14,14 +14,28 @@ const Work: FC = () => {
   const [isXLPanelOpen, setIsXLPanelOpen] = useState<boolean>(false);
   const [isLGPanelOpen, setIsLGPanelOpen] = useState<boolean>(false);
   const [projectDisplay, setProjectDisplay] = useState<Project>({} as Project);
+  const [projectIteration, setProjectIteration] = useState<number>(0);
 
   const handleKnobClick = () => {
     console.log("Knob clicked!");
+    console.log("You have "+projectNames.length + " projects.");
+    //resets to beginning of array after reaching the end
+    if(projectIteration == projectNames.length) {
+      console.log("reset")
+      setProjectIteration(0);
+      handleGuideClick(projectNames[0]);
+      setTimeout(()=>{
+        handleGuideClick(projectNames[0]);
+      }, 1000);
+      setProjectIteration(projectIteration + 1);
+      return
+    }
+    handleGuideClick(projectNames[projectIteration]);
+    setProjectIteration(projectIteration + 1);
   };
 
   const handleGuideClick = (name: string) => {
     const project: Project = projects[name];
-    console.log(project.img);
     setProjectDisplay(project);
     const panelXL = document.getElementById("info-panel-XL");
     const panelLG = document.getElementById("info-panel-LG");

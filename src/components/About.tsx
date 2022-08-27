@@ -1,10 +1,11 @@
 import React, { FC, useEffect } from "react";
 import { useAppSelector } from "../app/hooks";
-import { selectTheme } from "../features/theme/themeReducer";
+import { selectTheme, selectWidth } from "../features/theme/themeReducer";
 import Stats from "./Stats";
 
 const About: FC = () => {
   const theme = useAppSelector(selectTheme);
+  const width = useAppSelector(selectWidth);
 
   useEffect(() => {}, [theme]);
   return (
@@ -69,19 +70,32 @@ const About: FC = () => {
             <Stats />
             <div className="h-[15rem] w-full flex flex-row justify-evenly pt-4">
               <div className="h-[15rem] w-[11rem] flex flex-col items-center">
-                <div id="fasterTrait" />
+                {width > 639 ? (
+                  <div id="fasterTrait" />
+                ): (
+                  <div id="fasterTrait-xs" />
+                )}
+                
                 <p className="text-center about-text pt-4 dark:text-[#eee8bf]">
                   Optimization and performance are top priorities
                 </p>
               </div>
               <div className="h-[14rem] w-[11rem] flex flex-col items-center ">
-                <div id="cleanTrait" />
+              {width > 639 ? (
+                  <div id="cleanTrait" />
+                ): (
+                  <div id="cleanTrait-xs" />
+                )}
                 <p className="text-center about-text pt-4 dark:text-[#eee8bf]">
                   Clean, readable and dev friendly code
                 </p>
               </div>
               <div className="h-[14rem] w-[11rem] flex flex-col items-center ">
-                <div id="dynamicTrait" />
+              {width > 639 ? (
+                  <div id="dynamicTrait" />
+                ): (
+                  <div id="dynamicTrait-xs" />
+                )}
                 <p className="text-center about-text pt-4 dark:text-[#eee8bf]">
                   Dynamic, interactive UIs that invite the user
                 </p>
@@ -89,10 +103,10 @@ const About: FC = () => {
             </div>
           </div>
           <div className="w-full h-full flex flex-col ">
-            <div id="profile-pic" className="min-h-[22rem] scale-[0.60]"></div>
+            <div id="profile-pic" className="min-h-[23rem] scale-[0.60]"></div>
             <div className="flex justify-center w-full h-full mb-8">
               <div className="text-lg flex justify-center w-4/6 text-center about-text dark:text-[#eee8bf]">
-                I'm a full-stack developer with a focus on front-end
+                I'm a full-stack developer from Florida, USA with a focus on front-end
                 development. My passion is bringing data to life on the screen
                 and connecting people with web3 technologies
               </div>
