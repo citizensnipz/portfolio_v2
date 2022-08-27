@@ -8,7 +8,7 @@ export interface ThemeState {
 
 const initialState: ThemeState = {
   theme: 'light',
-  width: 640,
+  width: window.innerWidth,
 };
 
 export const themeSlice = createSlice({

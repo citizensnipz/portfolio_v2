@@ -66,7 +66,7 @@ const About: FC = () => {
         </div>
         {/*for md screens and below */}
         <div className="w-full h-full flex-col xs:flex lg:hidden">
-          <div className="h-full w-full flex justify-center flex-col">
+          <div className="h-full w-full flex justify-center items-center flex-col">
             <Stats />
             <div className="h-[15rem] w-full flex flex-row justify-evenly pt-4">
               <div className="h-[15rem] w-[11rem] flex flex-col items-center">
@@ -76,7 +76,7 @@ const About: FC = () => {
                   <div id="fasterTrait-xs" />
                 )}
                 
-                <p className="text-center about-text pt-4 dark:text-[#eee8bf]">
+                <p className="text-center xs:text-sm about-text pt-4 dark:text-[#eee8bf]">
                   Optimization and performance are top priorities
                 </p>
               </div>
@@ -86,7 +86,7 @@ const About: FC = () => {
                 ): (
                   <div id="cleanTrait-xs" />
                 )}
-                <p className="text-center about-text pt-4 dark:text-[#eee8bf]">
+                <p className="text-center xs:text-sm about-text pt-4 dark:text-[#eee8bf]">
                   Clean, readable and dev friendly code
                 </p>
               </div>
@@ -96,7 +96,7 @@ const About: FC = () => {
                 ): (
                   <div id="dynamicTrait-xs" />
                 )}
-                <p className="text-center about-text pt-4 dark:text-[#eee8bf]">
+                <p className="text-center xs:text-sm about-text pt-4 dark:text-[#eee8bf]">
                   Dynamic, interactive UIs that invite the user
                 </p>
               </div>

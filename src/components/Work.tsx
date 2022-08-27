@@ -1,5 +1,7 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
+import { useAppSelector } from "../app/hooks";
 import { projects, projectNames } from "../constants/workProjects";
+import { selectWidth } from "../features/theme/themeReducer";
 
 type Project = {
   name: string;
@@ -11,102 +13,148 @@ type Project = {
 };
 
 const Work: FC = () => {
-  const [isXLPanelOpen, setIsXLPanelOpen] = useState<boolean>(false);
-  const [isLGPanelOpen, setIsLGPanelOpen] = useState<boolean>(false);
+  const [isPanelOpen, setIsPanelOpen] = useState<boolean>(false);
   const [projectDisplay, setProjectDisplay] = useState<Project>({} as Project);
-  const [projectIteration, setProjectIteration] = useState<number>(0);
+  const [projectIndex, setProjectIndex] = useState<number>(0);
+  const width = useAppSelector(selectWidth);
+  const panXL = useRef<HTMLDivElement>(null);
+  const panLG = useRef<HTMLDivElement>(null);
+  const screenXL_static = useRef<HTMLDivElement>(null);
+  const screenLG_static = useRef<HTMLDivElement>(null);
+  const screenXS_static = useRef<HTMLDivElement>(null);
+  const screenXL_display = useRef<HTMLDivElement>(null);
+  const screenLG_display = useRef<HTMLDivElement>(null);
+  const screenXS_display = useRef<HTMLDivElement>(null);
 
   const handleKnobClick = () => {
-    console.log("Knob clicked!");
-    console.log("You have "+projectNames.length + " projects.");
-    //resets to beginning of array after reaching the end
-    if(projectIteration == projectNames.length) {
-      console.log("reset")
-      setProjectIteration(0);
-      handleGuideClick(projectNames[0]);
-      setTimeout(()=>{
+    
+    if (!isPanelOpen && projectIndex < projectNames.length) {
+        //panel is closed, index is valid value
+        handleGuideClick(projectNames[projectIndex])
+        //increment index
+        setProjectIndex(projectIndex + 1)
+    } else if (!isPanelOpen && projectIndex >= projectNames.length) {
+        //panel is closed, index is invalid value
+        //reset the panel to first project
         handleGuideClick(projectNames[0]);
-      }, 1000);
-      setProjectIteration(projectIteration + 1);
-      return
+        //reset the index
+        setProjectIndex(0)
+    } else if (isPanelOpen && projectIndex < projectNames.length) {
+        //panel is open, index is valid value
+        handleGuideClick(projectNames[projectIndex]);
+        setTimeout(() => {
+            handleGuideClick(projectNames[projectIndex], true);
+        }, 500);
+        //increment index
+        setProjectIndex(projectIndex + 1);
+    } else {
+        //panel is open, index is invalid value
+        handleGuideClick(projectNames[0]);
+        setTimeout(() => {
+            handleGuideClick(projectNames[0], true);
+        }, 500);
+        //reset the index
+        setProjectIndex(0)
     }
-    handleGuideClick(projectNames[projectIteration]);
-    setProjectIteration(projectIteration + 1);
   };
 
-  const handleGuideClick = (name: string) => {
+  const openPanel = () => {
+    if (panLG.current !== null && panXL.current !== null) {
+      panLG.current.classList.remove("hidden");
+      panLG.current.classList.remove("info-anim-LG-in");
+      panLG.current.classList.add("flex");
+      panLG.current.classList.add("info-anim-LG-out");
+      panXL.current.classList.remove("hidden");
+      panXL.current.classList.remove("info-anim-in");
+      panXL.current.classList.add("flex");
+      panXL.current.classList.add("info-anim-out");
+    }
+  };
+
+  const closePanel = () => {
+    if (panLG.current !== null && panXL.current !== null) {
+        panLG.current.classList.remove("info-anim-LG-out");
+        panLG.current.classList.add("info-anim-LG-in");
+        panXL.current.classList.remove("info-anim-out");
+        panXL.current.classList.add("info-anim-in");
+        setTimeout(() => {
+            panLG.current?.classList.remove("flex");
+            panLG.current?.classList.add("hidden");
+            panXL.current?.classList.remove("flex");
+            panXL.current?.classList.add("hidden");
+        }, 250);
+
+    }
+  }
+    
+
+  const switchToStatic = (
+
+  ) => {
+    const staticElemArray = [
+      screenXL_static.current,
+      screenLG_static.current,
+      screenXS_static.current,
+    ];
+    const displayElemArray = [
+      screenXL_display.current,
+      screenLG_display.current,
+      screenXS_display.current,
+    ];
+    staticElemArray.forEach((el) => {
+      el?.classList.add("block");
+      el?.classList.remove("hidden");
+    });
+    displayElemArray.forEach((el) => {
+      el?.classList.remove("block");
+      el?.classList.add("hidden");
+    });
+  };
+
+  const switchToDisplay = (
+
+  ) => {
+    const staticElemArray = [
+      screenXL_static.current,
+      screenLG_static.current,
+      screenXS_static.current,
+    ];
+    const displayElemArray = [
+      screenXL_display.current,
+      screenLG_display.current,
+      screenXS_display.current,
+    ];
+    staticElemArray.forEach((el) => {
+      el?.classList.remove("block");
+      el?.classList.add("hidden");
+    });
+    displayElemArray.forEach((el) => {
+      el?.classList.add("block");
+      el?.classList.remove("hidden");
+    });
+  };
+
+  const handleGuideClick = (name: string, knobClick?: boolean) => {
     const project: Project = projects[name];
     setProjectDisplay(project);
-    const panelXL = document.getElementById("info-panel-XL");
-    const panelLG = document.getElementById("info-panel-LG");
-    const screenLG_static = document.getElementById("tvScreenLG-static");
-    const screenLG_display = document.getElementById("tvScreenLG-display");
-    const screenXL_static = document.getElementById("tvScreenXL-static");
-    const screenXL_display = document.getElementById("tvScreenXL-display");
-    const windowWidth = window.innerWidth;
-    //ensures that large and small panels will be closed when changing window sizes
-    //and that the first click always opens the panel
-    if (windowWidth > 1279) {
-      setIsXLPanelOpen(!isXLPanelOpen);
-      setIsLGPanelOpen(false);
-      panelLG?.classList.remove("info-anim-LG-out");
-      panelLG?.classList.add("info-anim-LG-In");
+    if (!isPanelOpen || knobClick) {
+      openPanel();
+      switchToDisplay();
+      setIsPanelOpen(true);
     } else {
-      setIsLGPanelOpen(!isLGPanelOpen);
-      setIsXLPanelOpen(false);
-      panelXL?.classList.remove("info-anim-out");
-      panelXL?.classList.add("info-anim-in");
-    }
-
-    if (isXLPanelOpen && windowWidth > 1279) {
-      //closes XL panel
-      panelXL?.classList.remove("info-anim-out");
-      panelXL?.classList.add("info-anim-in");
-      screenXL_static?.classList.add("block");
-      screenXL_static?.classList.remove("hidden");
-      screenXL_display?.classList.remove("block");
-      screenXL_display?.classList.add("hidden");
-      setTimeout(() => {
-        panelXL?.classList.remove("flex");
-        panelXL?.classList.add("hidden");
-      }, 1000);
-    } else if (!isXLPanelOpen && windowWidth > 1279) {
-      //opens XL panel
-      panelXL?.classList.remove("hidden");
-      panelXL?.classList.remove("info-anim-in");
-      panelXL?.classList.add("flex");
-      panelXL?.classList.add("info-anim-out");
-      screenXL_static?.classList.remove("block");
-      screenXL_static?.classList.add("hidden");
-      screenXL_display?.classList.remove("hidden");
-      screenXL_display?.classList.add("block");
-    } else if (isLGPanelOpen && windowWidth < 1280) {
-      //closes LG panel
-      panelLG?.classList.remove("info-anim-LG-out");
-      panelLG?.classList.add("info-anim-LG-in");
-      screenLG_static?.classList.add("block");
-      screenLG_static?.classList.remove("hidden");
-      screenLG_display?.classList.remove("block");
-      screenLG_display?.classList.add("hidden");
-      setTimeout(() => {
-        panelLG?.classList.remove("flex");
-        panelLG?.classList.add("hidden");
-      }, 1000);
-    } else if (!isLGPanelOpen && windowWidth < 1280) {
-      //opens LG panel
-      panelLG?.classList.remove("hidden");
-      panelLG?.classList.remove("info-anim-LG-in");
-      panelLG?.classList.add("flex");
-      panelLG?.classList.add("info-anim-LG-out");
-      screenLG_static?.classList.remove("block");
-      screenLG_static?.classList.add("hidden");
-      screenLG_display?.classList.remove("hidden");
-      screenLG_display?.classList.add("block");
+      closePanel();
+      switchToStatic();
+      setIsPanelOpen(false);
     }
   };
 
+  useEffect(() => {}, [width]);
+
   return (
-    <div id="work-bg" className="bg-yellow-600 dark:bg-indigo-900 w-full h-[100vh] flex flex-col justify-start items-center relative backdrop:pt-8 ">
+    <div
+      id="work-bg"
+      className="bg-yellow-600 dark:bg-indigo-900 w-full sm:h-[100vh] xs:h-[90vh]  flex flex-col justify-start items-center relative backdrop:pt-8 "
+    >
       <h1 className="text-6xl h-[3rem] mt-4 section-title w-full flex items-center justify-center dark:text-[#eee8bf]">
         Work
       </h1>
@@ -118,27 +166,36 @@ const Work: FC = () => {
         <div className="flex-row w-[44rem] absolute z-2 top-[32rem] xs:hidden xl:flex">
           <div
             id="info-panel-XL"
+            ref={panXL}
             className="w-[16rem] h-[30rem] hidden bg-white dark:bg-cyan-800 absolute z-0 flex-col items-center p-3 shadow-lg"
           >
             {projectDisplay.name !== undefined ? (
               <div className="flex flex-col items-center justify-between h-full">
                 <h2 id="title" className="text-xl mt-14 dark:text-[#eee8bf]">
-                  <a href={projectDisplay.url} target="_blank">{projectDisplay.name}</a>
+                  <a href={projectDisplay.url} target="_blank">
+                    {projectDisplay.name}
+                  </a>
                 </h2>
                 <div className="flex flex-col items-center">
-                  <h4 id="subtitle" className="dark:text-[#eee8bf]">Description:</h4>
+                  <h4 id="subtitle" className="dark:text-[#eee8bf]">
+                    Description:
+                  </h4>
                   <p id="text" className="text-center dark:text-[#eee8bf]">
                     {projectDisplay.description}
                   </p>
                 </div>
                 <div className="flex flex-col items-center">
-                  <h4 id="subtitle" className="dark:text-[#eee8bf]">Languages:</h4>
+                  <h4 id="subtitle" className="dark:text-[#eee8bf]">
+                    Languages:
+                  </h4>
                   <p id="text" className="text-center dark:text-[#eee8bf]">
                     {projectDisplay.languages.join(", ")}
                   </p>
                 </div>
                 <div className="flex flex-col items-center mb-14">
-                  <h4 id="subtitle" className="dark:text-[#eee8bf]">Frameworks/Libraries:</h4>
+                  <h4 id="subtitle" className="dark:text-[#eee8bf]">
+                    Frameworks/Libraries:
+                  </h4>
                   <p id="text" className="text-center dark:text-[#eee8bf]">
                     {projectDisplay.frameworks.join(", ")}
                   </p>
@@ -158,20 +215,25 @@ const Work: FC = () => {
             id="tvFrameXL"
             className="flex justify-center items-center rounded-l-md shadow-2xl"
           >
-            <div id="tvScreenXL-static" className="shadow-lg" />
+            <div
+              id="tvScreenXL-static"
+              ref={screenXL_static}
+              className="shadow-lg"
+            />
             <div
               id="tvScreenXL-display"
+              ref={screenXL_display}
               className="shadow-lg hidden bg-black z-3"
             >
               <a href={projectDisplay.url} target="_blank">
-              <div
-                className="w-full h-full"
-                style={{
-                  backgroundImage: `url("${projectDisplay.img}")`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center"
-                }}
-              />
+                <div
+                  className="w-full h-full"
+                  style={{
+                    backgroundImage: `url("${projectDisplay.img}")`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                />
               </a>
             </div>
           </div>
@@ -190,28 +252,38 @@ const Work: FC = () => {
           </div>
         </div>
         {/* lg screens and below */}
-        <div className="flex-row w-[35rem] absolute z-2 top-[32rem] xs:flex xl:hidden">
+        <div className="flex-row w-[35rem] absolute z-2 top-[32rem] xs:hidden sm:flex xl:hidden">
           <div id="tvLegLeft" />
           <div id="tvShadow" className="flex-grow" />
           <div id="tvLegRight" />
         </div>
         <div
           id="tvBoxWrapper"
-          className="justify-center pt-8 flex-row absolute z-3 xs:flex xl:hidden"
+          className="justify-center pt-8 flex-row absolute z-3 xs:hidden sm:flex xl:hidden"
         >
           <div
             id="tvFrameLG"
             className="flex justify-center items-center rounded-l-md shadow-2xl"
           >
-            <div id="tvScreenLG-static" className="shadow-lg" />
-            <div id="tvScreenLG-display" className="shadow-lg hidden">
-            <a href={projectDisplay.url} target="_blank">
-              <div
-                className="w-full h-full"
-                style={{ backgroundImage: `url("${projectDisplay.img}")`,
-                backgroundSize: "cover",
-                backgroundPosition: "center"}}
-              />
+            <div
+              id="tvScreenLG-static"
+              ref={screenLG_static}
+              className="shadow-lg"
+            />
+            <div
+              id="tvScreenLG-display"
+              ref={screenLG_display}
+              className="shadow-lg hidden"
+            >
+              <a href={projectDisplay.url} target="_blank">
+                <div
+                  className="w-full h-full"
+                  style={{
+                    backgroundImage: `url("${projectDisplay.img}")`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                />
               </a>
             </div>
           </div>
@@ -229,6 +301,56 @@ const Work: FC = () => {
             </div>
           </div>
         </div>
+        {/* for xs mobile screens */}
+        <div className="flex-row w-[22rem] absolute z-2 top-[19rem] xs:flex sm:hidden">
+          <div id="tvLegLeftXS" className="" />
+          <div id="tvShadowXS" className="flex-grow" />
+          <div id="tvLegRightXS" />
+        </div>
+        <div
+          id="tvBoxWrapper"
+          className="justify-center pt-8 flex-row absolute z-3 xs:flex sm:hidden"
+        >
+          <div
+            id="tvFrameXS"
+            className="flex justify-center items-center rounded-l-md shadow-2xl"
+          >
+            <div
+              id="tvScreenXS-static"
+              ref={screenXS_static}
+              className="shadow-lg "
+            />
+            <div
+              id="tvScreenXS-display"
+              ref={screenXS_display}
+              className="shadow-lg hidden"
+            >
+              <a href={projectDisplay.url} target="_blank">
+                <div
+                  className="w-full h-full"
+                  style={{
+                    backgroundImage: `url("${projectDisplay.img}")`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                />
+              </a>
+            </div>
+          </div>
+          <div id="tvControlsXS" className="rounded-r-md">
+            <div
+              id="knobWrapper"
+              className="h-full w-full p-8 flex flex-col items-center justify-between "
+            >
+              <div
+                className="tvKnobXS animate-pulse"
+                onClick={handleKnobClick}
+              />
+              <div className="tvKnobXS" />
+              <div className="tvGrateXS" />
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* TV guide controls */}
@@ -243,30 +365,53 @@ const Work: FC = () => {
           >
             <div
               id="info-panel-LG"
-              className="bg-white dark:bg-cyan-800 w-5/6 h-full absolute flex-col items-center rounded-t-md z-0"
+              ref={panLG}
+              className="bg-white dark:bg-cyan-800 xs:w-full sm:w-5/6 h-full absolute flex-col items-center rounded-t-md z-0"
             >
               {projectDisplay.name !== undefined ? (
-                <div className="flex flex-row items-between items-center p-4">
-                  <h2 id="title" className="text-xl dark:text-[#eee8bf]">
-                  <a href={projectDisplay.url} target="_blank">{projectDisplay.name}</a>
+                <div className="flex xs:flex-col sm:flex-row items-between items-center p-4">
+                  <h2
+                    id="title"
+                    className="xs:text-md sm:text-xl dark:text-[#eee8bf]"
+                  >
+                    <a href={projectDisplay.url} target="_blank">
+                      {projectDisplay.name}
+                    </a>
                   </h2>
-                  <div className="flex flex-col items-center">
-                    <h4 id="subtitle" className="dark:text-[#eee8bf]">Description:</h4>
-                    <p id="text" className="text-center dark:text-[#eee8bf]">
-                      {projectDisplay.description}
-                    </p>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <h4 id="subtitle" className="dark:text-[#eee8bf]">Languages:</h4>
-                    <p id="text" className="text-center dark:text-[#eee8bf]">
-                      {projectDisplay.languages.join(", ")}
-                    </p>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <h4 id="subtitle" className="dark:text-[#eee8bf]">Frameworks/Libraries:</h4>
-                    <p id="text" className="text-center dark:text-[#eee8bf]">
-                      {projectDisplay.frameworks.join(", ")}
-                    </p>
+                  <div className="flex flex-row">
+                    <div className="flex flex-col items-center">
+                      <h4 id="subtitle" className="dark:text-[#eee8bf]">
+                        Description:
+                      </h4>
+                      <p
+                        id="text"
+                        className="text-center dark:text-[#eee8bf] xs:text-sm sm:text-md"
+                      >
+                        {projectDisplay.description}
+                      </p>
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <h4 id="subtitle" className="dark:text-[#eee8bf]">
+                        Languages:
+                      </h4>
+                      <p
+                        id="text"
+                        className="text-center dark:text-[#eee8bf] xs:text-sm sm:text-md"
+                      >
+                        {projectDisplay.languages.join(", ")}
+                      </p>
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <h4 id="subtitle" className="dark:text-[#eee8bf]">
+                        Frameworks/Libraries:
+                      </h4>
+                      <p
+                        id="text"
+                        className="text-center dark:text-[#eee8bf] xs:text-sm sm:text-md"
+                      >
+                        {projectDisplay.frameworks.join(", ")}
+                      </p>
+                    </div>
                   </div>
                 </div>
               ) : null}

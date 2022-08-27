@@ -16,6 +16,9 @@ code {
 @tailwind components;
 @tailwind utilities;
 
+
+/* fonts */
+
 @font-face {
   font-family: 'fifties_moviesregular';
   src: url('./fonts/fifties_movies-webfont.woff') format('woff'),
@@ -307,8 +310,42 @@ code {
   height: 23rem;
   width: 27rem;
   mask-image: url("./img/tvScreen-icon-mask.png");
-  mask-size: cover;
+  mask-size: 27rem 23rem;
   mask-position: center;
+  mask-repeat: no-repeat;
+}
+
+#tvScreenXS-display {
+  position: absolute;
+  height: 17rem;
+  width: 18rem;
+  mask-image: url("./img/tvScreen-icon-mask.png");
+  mask-size: 18rem 17rem;
+  mask-position: center;
+  mask-repeat: no-repeat;
+}
+
+#tvScreenXS-static {
+  position: relative;
+  width: 17rem;
+  height: 16rem;
+  margin: 20px 0;
+  background-image: url("./img/static1.gif");
+  border-radius: 50% / 10%;
+  color: white;
+  text-align: center;
+  text-indent: .1em;
+}
+
+#tvScreenXS-static:before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  right: -5%;
+  left: -5%;
+  background: inherit;
+  border-radius: 5% / 50%;
 }
 
 #tvFrameXL {
@@ -331,6 +368,16 @@ code {
   border-bottom: 2rem solid #70360a;
 }
 
+#tvFrameXS {
+  background: #4a2407;
+  width: 20rem;
+  height: 18rem;
+  border-top: 2rem solid #70360a;
+  border-right: 2rem solid #70360a;
+  border-left: 2rem solid #70360a;
+  border-bottom: 2rem solid #70360a;
+}
+
 #tvControlsXL {
   width: 10rem;
   height: 30rem;
@@ -343,6 +390,12 @@ code {
   background: #4a2407;
 }
 
+#tvControlsXS {
+  width: 4rem;
+  height: 18rem;
+  background: #4a2407;
+}
+
 #tvLegLeft {
   width: 0;
   height: 0;
@@ -350,6 +403,24 @@ code {
   border-right: 40px solid transparent;
   border-top: 130px solid #4a2407;
   transform: translateY(-1.5rem) rotate(25deg);
+}
+
+#tvLegLeftXS {
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-top: 130px solid #4a2407;
+  transform: translateY(-1.5rem) rotate(25deg) scale(0.7);
+}
+
+#tvLegRightXS {
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-top: 130px solid #4a2407;
+  transform: translateY(-1.5rem) rotate(-25deg) scale(0.7);
 }
 
 #tvLegRight {
@@ -363,6 +434,18 @@ code {
 
 #tvShadow {
   height: 5rem;
+  background: radial-gradient(
+    ellipse,
+    #0a0a0a,
+    #0a0a0a 0%,
+    transparent 70%, 
+    transparent
+    );
+  transform: translateY(2rem);
+}
+
+#tvShadowXS {
+  height: 3rem;
   background: radial-gradient(
     ellipse,
     #0a0a0a,
@@ -469,6 +552,8 @@ code {
   border-bottom-left-radius: 0.5rem;
 }
 
+/* tv classes */
+
 .tvGrateXL {
   width: 8rem;
   height: 8rem;
@@ -487,6 +572,20 @@ code {
   width: 5rem;
   height: 5rem;
   border: 0.2rem solid #401c01;
+  background: linear-gradient(
+    to bottom,
+    #70360a,
+    #70360a 50%,
+    #4a2407 50%,
+    #4a2407
+  );
+  background-size: 100% 1.18rem;
+}
+
+.tvGrateXS {
+  width: 3rem;
+  height: 3rem;
+  border: 0.1rem solid #401c01;
   background: linear-gradient(
     to bottom,
     #70360a,
@@ -527,9 +626,26 @@ code {
   z-index: 1;
 }
 
+.tvKnobXS {
+  width: 50px;
+  height: 50px;
+  box-shadow: 3rem;
+  background: radial-gradient(
+    circle,
+    #919191,
+    #919191 35%, 
+    #c4c3c2 45%,
+    #c4c3c2 );
+  border: 0.25rem solid #4f4f4e;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* animation classes */
+
 .info-anim-out {
   animation: infoAnimOut;
-  animation-duration: 1s;
+  animation-duration: 0.25s;
   animation-iteration-count: 1;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
@@ -537,7 +653,7 @@ code {
 
 .info-anim-in {
   animation: infoAnimIn;
-  animation-duration: 1s;
+  animation-duration: 0.25s;
   animation-iteration-count: 1;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
@@ -545,7 +661,7 @@ code {
 
 .info-anim-LG-out {
   animation: infoAnimLG-Out;
-  animation-duration: 1s;
+  animation-duration: 0.25s;
   animation-iteration-count: 1;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
@@ -553,11 +669,13 @@ code {
 
 .info-anim-LG-in {
   animation: infoAnimLG-In;
-  animation-duration: 1s;
+  animation-duration: 0.25s;
   animation-iteration-count: 1;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
 }
+
+/* other classes */
 
 .stat-fill {
   animation-name: statAnim;
@@ -663,6 +781,8 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+/* animations */
 
 @keyframes blobAnim {
   0% {transform: rotateY(0deg) rotate(12deg)}

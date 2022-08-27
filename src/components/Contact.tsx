@@ -18,7 +18,7 @@ const Contact: FC = () => {
         action="mailto:jkroslowitz@gmail.com"
         method="POST"
         name="ContactForm"
-        className="w-4/6 h-4/6 flex flex-col items-center p-2"
+        className="w-4/6 xs:w-5/6 h-4/6 flex flex-col items-center xs:p-0 p-2"
       >
         <input
           type="email"
