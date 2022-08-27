@@ -17,7 +17,7 @@ export const projects: {[name: string]: Project} = {
         languages: ["HTML", "CSS", "TypeScript", "JavaScript"],
         frameworks: ["React", "Material UI", "GraphQL", "MongoDB"],
         description: "A review aggregator for metaverse, VR and AR products.",
-        url: "nexaprism.joshkroz.com",
+        url: "https://nexaprism.joshkroz.com",
         img: nexaprismIMG,
     }
 }
