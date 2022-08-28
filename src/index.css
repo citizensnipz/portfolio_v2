@@ -63,6 +63,15 @@ code {
   width: 100%;
 }
 
+#about-arrow-xs {
+  border-bottom: 5em solid #F2DF4D;
+  border-left: 48vw solid transparent;
+  border-right: 48vw solid transparent;
+  float: left;
+  height: 10rem;
+  width: 100%;
+}
+
 #about-arrow-dark {
   border-bottom: 5em solid #7B56F7;
   border-left: 49vw solid transparent;
@@ -72,10 +81,19 @@ code {
   width: 100%;
 }
 
+#about-arrow-dark-xs {
+  border-bottom: 5em solid #7B56F7;
+  border-left: 48vw solid transparent;
+  border-right: 48vw solid transparent;
+  float: left;
+  height: 10rem;
+  width: 100%;
+}
+
 #contact-arrow {
   border-bottom: 5em solid #a16207;
-  border-left: 49vw solid transparent;
-  border-right: 49vw solid transparent;
+  border-left: 48vw solid transparent;
+  border-right: 48vw solid transparent;
   float: left;
   height: 10rem;
   width: 100%;
@@ -84,8 +102,8 @@ code {
 
 #contact-arrow-dark {
   border-bottom: 5em solid #312e81;
-  border-left: 49vw solid transparent;
-  border-right: 49vw solid transparent;
+  border-left: 48vw solid transparent;
+  border-right: 48vw solid transparent;
   float: left;
   height: 10rem;
   width: 100%;
@@ -140,8 +158,8 @@ code {
 }
 
 #blob2-xs {
-  width: 22rem;
-  height: 18rem;
+  width: 19rem;
+  height: 16rem;
   background-color: "transparent";
   border-top: 1rem solid #F2DF4D;
   border-bottom: 1rem solid #F2DF4D;
@@ -175,8 +193,8 @@ code {
 }
 
 #blob2-dark-xs {
-  width: 24rem;
-  height: 20rem;
+  width: 19rem;
+  height: 16rem;
   background-color: "transparent";
   border-top: 1rem solid #4BC6D6;
   border-bottom: 1rem solid #4BC6D6;
@@ -320,9 +338,9 @@ code {
 #tvScreenXS-display {
   position: absolute;
   height: 17rem;
-  width: 18rem;
+  width: 16rem;
   mask-image: url("./img/tvScreen-icon-mask.png");
-  mask-size: 18rem 17rem;
+  mask-size: 17rem 16rem;
   mask-position: center;
   mask-repeat: no-repeat;
 }
@@ -372,7 +390,7 @@ code {
 
 #tvFrameXS {
   background: #4a2407;
-  width: 20rem;
+  width: 18rem;
   height: 18rem;
   border-top: 2rem solid #70360a;
   border-right: 2rem solid #70360a;

@@ -47,7 +47,7 @@ const Intro: FC = () => {
             return (
               <div
                 id="blob2-dark-xs"
-                className="absolute top-[29vh] z-0"
+                className="absolute top-[32vh] z-0"
               />
             );
           }
@@ -62,7 +62,7 @@ const Intro: FC = () => {
           if (width < 640 && theme == "light") {
             return <div
             id="blob2-xs"
-            className="absolute top-[29vh] z-0"
+            className="absolute top-[32vh] z-0"
           />
           }
         })()}
@@ -82,13 +82,13 @@ const Intro: FC = () => {
           full-stack web developer
         </h3>
       </div>
-      <div className="absolute top-[60vh] xs:left-[65%] sm:left-[63%] lg:left-[57%]">
+      <div className="absolute top-[60vh] xs:left-[60%] sm:left-[63%] lg:left-[57%]">
         <div id="burst-8" className="bg-orange-700 dark:bg-sky-300"></div>
       </div>
 
       <div
         id="bubble"
-        className="absolute bg-white dark:bg-sky-200 ring-2 ring-inset ring-zinc-800 dark:ring-black flex justify-center items-center top-[60vh] xs:left-[60%] lg:left-[55%] xl:left-[55.5%]"
+        className="absolute bg-white dark:bg-sky-200 ring-2 ring-inset ring-zinc-800 dark:ring-black flex justify-center items-center top-[60vh] xs:left-[53%] lg:left-[55%] xl:left-[55.5%]"
       >
         <h4 className="text-2xl text-black ">
           now in web3!

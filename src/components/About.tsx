@@ -14,11 +14,17 @@ const About: FC = () => {
       className="w-full sm:h-[158vh] lg:h-screen relative bg-gradient-to-t from-[#F0B359] to-[#F2DF4D] dark:from-slate-700 dark:to-[#7B56F7]"
     >
       <div className="flex flex-col justify-center h-full">
-        {theme == "dark" ? (
-          <div id="about-arrow-dark" className="top-[-10rem] absolute" />
-        ) : (
-          <div id="about-arrow" className="top-[-10rem] absolute" />
-        )}
+        {(() => {
+            if(theme == "dark" && width > 640) {
+                return <div id="about-arrow-dark" className="top-[-10rem] absolute" />
+            } else if (theme == "dark" && width <= 640 ) {
+                return <div id="about-arrow-dark-xs" className="top-[-10rem] absolute" />
+            } else if (theme == "light" && width > 640 ) {
+                return <div id="about-arrow" className="top-[-10rem] absolute" />
+            } else if (theme == "light" && width <= 640 ) {
+                return <div id="about-arrow-xs" className="top-[-10rem] absolute" />
+            }
+        })()}
 
         <div className="flex justify-center w-full h-[7rem] relative">
           <h1 className="text-6xl section-title h-full dark:text-[#eee8bf]">About</h1>
