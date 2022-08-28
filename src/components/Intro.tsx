@@ -1,9 +1,8 @@
-import React, { FC, useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { FC, useEffect } from "react";
+import { useAppSelector } from "../app/hooks";
 import {
   selectTheme,
   selectWidth,
-  setTheme,
 } from "../features/theme/themeReducer";
 import NavBar from "./NavBar";
 
@@ -12,7 +11,6 @@ const Intro: FC = () => {
   const width = useAppSelector(selectWidth);
 
   useEffect(() => {
-    console.log(width);
   }, [theme]);
 
   return (

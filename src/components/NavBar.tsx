@@ -1,11 +1,10 @@
 import { FC, useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { selectTheme, setTheme } from "../features/theme/themeReducer";
+import { useAppDispatch } from "../app/hooks";
+import { setTheme } from "../features/theme/themeReducer";
 
 const NavBar: FC = () => {
   const [isDark, setIsDark] = useState<boolean>(false);
   const dispatch = useAppDispatch();
-  const theme = useAppSelector(selectTheme);
 
   const menuItems = ["intro", "about", "work", "contact"];
 
