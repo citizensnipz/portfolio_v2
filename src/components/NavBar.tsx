@@ -29,13 +29,13 @@ const NavBar: FC = () => {
     const stickyNav = () => {
       if (navbar && sticky) {
         if (window.pageYOffset >= sticky) {
-            navContainer?.classList.add("bg-[#F2DF4D]");
-            navContainer?.classList.add("dark:bg-[#5FA8ED]");
+          navContainer?.classList.add("bg-[#F2DF4D]");
+          navContainer?.classList.add("dark:bg-[#5FA8ED]");
           navbar.classList.add("sticky");
         } else {
           navbar.classList.remove("sticky");
           navContainer?.classList.remove("bg-[#F2DF4D]");
-            navContainer?.classList.remove("dark:bg-[#5FA8ED]");
+          navContainer?.classList.remove("dark:bg-[#5FA8ED]");
         }
       }
     };
@@ -45,7 +45,10 @@ const NavBar: FC = () => {
   }, []);
 
   return (
-    <div id="nav-container" className="w-full h-[4rem] flex flex-row justify-between items-center p-6">
+    <div
+      id="nav-container"
+      className="w-full h-[4rem] flex flex-row justify-between items-center p-6"
+    >
       <div>
         {menuItems.map((item) => (
           <button
@@ -55,7 +58,7 @@ const NavBar: FC = () => {
                 .getElementById(item + "-bg")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
-            className="h-[1rem] xs:w-[4rem] md:w-[5rem] section-title text-amber-800 dark:text-[#eee8bf]"
+            className="h-[1rem] xs:w-[3rem] md:w-[5rem] section-title xs:text-sm xs:mr-3 text-amber-800 dark:text-[#eee8bf]"
           >
             {item}
           </button>

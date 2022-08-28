@@ -420,9 +420,14 @@ const Work: FC = () => {
 
           <div
             id="bg"
-            className="w-full h-full flex flex-row bg-gradient-to-t from-slate-300 to-white absolute z-1"
+            className="w-full h-full flex flex-row bg-gradient-to-t items-center from-slate-300 to-white absolute z-1"
           >
-            <div id="tvGuideLogo" className="ml-6 w-2/12 min-w-[12rem]" />
+            {width > 640 ? (
+                <div id="tvGuideLogo" className="ml-6 w-2/12 sm:min-w-[12rem]" />
+            ):(
+                <div id="tvGuideLogo-XS" className="ml-6 w-2/12 min-w-[8rem]" />
+            )}
+            
             <div className="h-full w-10/12 flex-row flex items-center justify-center">
               {projectNames.map((p) => {
                 return (

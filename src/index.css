@@ -111,7 +111,7 @@ code {
 }
 
 #blob1-xs {
-  width: 24rem;
+  width: 27rem;
   height: 18rem;
   border-top: 1rem solid transparent;
   border-bottom: 3rem solid transparent;
@@ -119,6 +119,7 @@ code {
   border-top-left-radius: 50rem 20rem;
   border-bottom-left-radius: 39rem 20rem;
   border-bottom-right-radius: 20rem 30rem;
+  transform: scale(0.8);
 }
 
 #blob2 {
@@ -139,8 +140,8 @@ code {
 }
 
 #blob2-xs {
-  width: 24rem;
-  height: 20rem;
+  width: 22rem;
+  height: 18rem;
   background-color: "transparent";
   border-top: 1rem solid #F2DF4D;
   border-bottom: 1rem solid #F2DF4D;
@@ -153,6 +154,7 @@ code {
   animation-duration: 3.5s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
+  transform: scale(0.8);
 }
 
 #blob2-dark {
@@ -513,6 +515,15 @@ code {
 #tvGuideLogo {
   width: 12rem;
   height: 9rem;
+  background-image: url('./img/TVGuideLogo2.png');
+  background-position: center;
+  background-size: cover;
+  transform: scale(0.8);
+}
+
+#tvGuideLogo-XS {
+  width: 8rem;
+  height: 6rem;
   background-image: url('./img/TVGuideLogo2.png');
   background-position: center;
   background-size: cover;
