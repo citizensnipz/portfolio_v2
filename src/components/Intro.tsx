@@ -86,7 +86,7 @@ const Intro: FC = () => {
 
       <div
         id="bubble"
-        className="absolute bg-white dark:bg-sky-200 ring-2 ring-inset ring-zinc-800 dark:ring-black flex justify-center items-center top-[60vh] xs:left-[53%] lg:left-[55%] xl:left-[55.5%]"
+        className="absolute bg-white dark:bg-sky-200 ring-2 ring-inset ring-zinc-800 dark:ring-black flex justify-center items-center top-[60vh] xs:left-[53%] lg:left-[55%] xl:left-[55.5%] z-3"
       >
         <h4 className="text-2xl text-black ">
           now in web3!

@@ -815,9 +815,9 @@ input:checked + .slider:before {
 /* animations */
 
 @keyframes blobAnim {
-  0% {transform: rotateY(0deg) rotate(12deg)}
-  50% {transform: rotateY(30deg) rotate(12deg)}
-  100% {transform: rotateY(0deg) rotate(12deg)}
+  0% {transform: scaleX(1) rotate(12deg)}
+  50% {transform: scaleX(0.85) rotate(12deg)}
+  100% {transform: scaleX(1) rotate(12deg)}
 }
 
 @keyframes statAnim {
